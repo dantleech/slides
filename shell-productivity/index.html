@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Using the Shell more Effectively - Tips and Tricks</title>
+
+		<meta name="description" content="Tips and tricks for using the shell">
+		<meta name="author" content="Daniel Leech">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Proficiency with the Shell</h1>
+					<h3>Some tips and tricks for shell productivity</h3>
+					<p>
+						<small>Created by <a href="http://www.dantleech.com">Daniel Leech</a> / <a href="http://twitter.com/dantleech">@dantleech</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>The Shell</h2>
+					<p>
+                         This is a talk about Shells and some of the cool things you can do with them.
+					</p>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section data-markdown>
+                    Readline: Keyboard shortcuts in the Shell
+                    -----------------------------------------
+
+                    Readline is library used by many command line applications.
+
+                    Used by:
+
+                    - ZSH
+                    - BASH
+                    - MySQL client
+                    - Postgres client
+                    - .. basically most shell applications.
+                    </section>
+                    <section>
+                        <h2>VI or Emacs?</h2>
+                        <ul>
+                            <li class="fragment"><code>bindkey -v</code>: Switch to VI mode</li>
+                            <li class="fragment"><code>bindkey -e</code>: Switch to EMACS mode</li>
+                            <li class="fragment">But we will continue with EMACS examples...</li>
+                        </ul>
+                    </section>
+                    <section data-markdown>
+                    Move cursor one word backwards
+
+                    ## alt-B 
+                    
+                    *b* for backwards
+
+
+                        $ mysqldump -u root -p mydatabase mytable > foobar.sql[]
+                        <ctrl-b>
+                        $ mysqldump -u root -p mydatabase mytable > foobar.[]sql
+                        <ctrl-b>
+                        $ mysqldump -u root -p mydatabase mytable > []foobar.sql
+                    </section>
+
+                    <section data-markdown>
+                    Move cursor one word forwards **f** for forwards:
+
+                    ## alt-F
+                    
+                    *f* for forwards
+
+                        $ mysqldump -u root -p mydatabase mytable > []foobar.sql
+                        $ mysqldump -u root -p mydatabase mytable > foobar[].sql
+                    </section>
+
+                    <section data-markdown>
+                    Remove words:
+
+                    ## ctrl-w
+                    
+                    *w* for wunderbar
+
+                        $ mysqldump -u root -p mydatabase mytable > foobar.sql[]
+                        <ctrl-w>
+                        $ mysqldump -u root -p mydatabase mytable > foobar.[]
+                        <ctrl-w>
+                        $ mysqldump -u root -p mydatabase mytable > []
+                    </section>
+
+                    <section data-markdown>
+                    Swap words:
+
+                    # alt-t
+
+                    *t* for transpose
+
+                        $ echo one t[]wo three
+                        <alt-t>
+                        $ echo two one[] three
+					</section>
+				</section>
+
+                <section>
+                    <section data-markdown>
+                    # Wildcards
+                    </section>
+                    <section data-markdown>
+                    Specify multiple range of targets:
+
+                        $ touch file[1-10].txt
+                    
+                    </section>
+                    <section data-markdown>
+                    Specify explicit targets:
+
+                        $ mkdir {myfolder,yourfolder,theirfolder}
+                    </section>
+                    <section data-markdown>
+                    Everyone knows `*` right?
+
+                        $ mv *.txt myfolder
+                        $ ls myfolder
+                        file1.txt
+                        file2.txt
+                        ..
+                        file10.txt
+                    </section>
+                    <section data-markdown>
+                    What about `?`
+
+                        $ mv file??.txt myfolder
+                        $ ls myfolder
+                        file10.txt
+                    </section>
+                    <section data-markdown>
+                    More globbing (http://fendrich.se/blog/2012/09/28/no):
+
+                        ls *(.)            # list just regular files
+                        ls *(/)            # list just directories
+                        ls -ld *(/om[1,3]) # Show three newest directories. "om" orders by modification. "[1,3]" works like Python slice.
+                        rm -i *(.L0)       # Remove zero length files, prompt for each file
+                        ls *(^m0)          # Files not modified today.
+                        emacs **/main.py   # Edit main.py, wherever it is in this directory tree. ** is great.
+                        ls **/*(.x)        # List all executable files in this tree
+                        ls *~*.*(.)        # List all files that does not have a dot in the filename
+                        ls -l */**(Lk+100) # List all files larger than 100kb in this tree
+                        ls DATA_[0-9](#c4,7).csv # List DATA_nnnn.csv to DATA_nnnnnnn.csv
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown>
+                    BANG!: Bang operators
+                    ---------------------
+                    </section>
+                    <section data-markdown>
+                    Get last command:
+
+                    ## !!
+
+                        $ vim /etc/hosts
+                        $ sudo !!
+                        $ sudo /etc/hosts
+                    </section>
+                    <section data-markdown>
+                    Last argument of last command:
+                    ## !$
+
+                        $ touch /foobar
+                        $ rm !$
+                        $ rm /foobar
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown>
+                    Replacement
+                    -----------
+
+                    Remember !!, lets combine it with a modifier:
+
+                        $ echo "Happy brown dogs sleep peacefully"
+                        $ !!:s/Happy/Sad/
+                        $ !!:s/restlessly//
+                    </section>
+                    <section data-markdown>
+                    Replacing one or many:
+
+                        $ echo "BEER BEER BEER BEER BEER BEER BEER"
+                        $ !!:s/BEER/SHNITZEL
+                        $ echo "SHNITZEL BEER BEER BEER BEER BEER BEER"
+
+                        $ !!:s/BEER/SHNITZEL/g
+                        $ echo "SHNITZEL SHNITZEL SHNITZEL SHNITZEL SHNITZEL SHNITZEL SHNITZEL"
+                    </section>
+                    <section data-markdown>
+                    You can add as many modifiers as you want:
+
+                        $ echo "Happy brown dogs sleep peacefully"
+                        $ !!:s/Happy/Colorless/:s/brown/green/:s/dogs/ideas/:s/peacefully/furiously/
+                        $ echo "Colorless green ideas sleep furiously"
+                    </section>
+                    <section data-markdown>
+                    ## Other modifiers
+                    </section>
+                    <section data-markdown>
+                        lowercase
+
+                        ## l
+
+                            $ echo HELLO
+                            $ !!:l
+                            $ echo hello
+                    </section>
+                    <section data-markdown>
+                    prepend the current directory
+
+                    ## a
+
+                        $ echo hello
+                        $ !$:a
+                        $ echo /home/daniel/hello
+                    </section>
+                    <section data-markdown>
+                        Lots more, see the references at the end of this presentation.
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown>
+                    Regex Replacement with Perl or Sed
+                    ----------------------------------
+
+                    Using perl:
+
+                        $ echo "http://my.site.dom" | perl -pe 's/my/your/g'
+                        http://your.site.dom
+                        $ echo "http://my.site.dom" | perl -pe 's/^.*my.(.*).dom/She sells \1 shells/g'
+                        She sells site shells
+                    </section>
+                    <section data-markdown>
+                    Editing a file in place:
+
+                        $ perl -e 's/^.*my.(.*).dom/She sells \1 shells/g' myfile.txt
+                    </section>
+                    <section data-markdown>
+                    Using sed (note the escaping around the brackets):
+
+                        $ echo "http://my.site.dom" | sed -e 's/^.*my.\(.*\).dom/She sells \1 shells/g'
+                        She sells site shells
+
+                    </section>
+                    <section data-markdown>
+                    Using PHP in the command lines
+                    ------------------------------
+
+                    If using other tools scares you, you can use PHP, its just more verbose!:
+
+                        $ echo "She sells sea shells on the sea shore" | php -r "echo str_replace('sells', 'throws', file_get_contents('php://stdin'));"
+                        She throws sea shells on the sea shore
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                    Variables 
+                    ---------
+                    </section>
+                    <section data-markdown>
+                    substr:
+
+                        $ barfoo=foobar
+                        $ echo $barfoo
+                        $ echo ${barfoo}
+                        foobar
+                        $ echo ${barfoo:3}
+                        bar
+                        $ echo ${barfoo:0:3}
+                        foo
+                    </section>
+                    <section data-markdown>
+                    You can use modifiers on variables too:
+
+                        $ echo ${barfoo:a}
+                        /home/daniel/foobar
+                        $ echo $((C)foobar)
+                        Foobar
+                        $ echo $(foobar:u)
+                        FOOBAR
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown>
+                    Automation - for loops
+                    ----------------------
+                    </section>
+                    <section data-markdown>
+                    Potatoes:
+
+                        $ for NUMBER in One Two Three; do echo $NUMBER" potato"; done;
+                        One potato
+                        Two potato
+                        Three potato
+                    </section>
+                    <section data-markdown>
+                    Iterate over interpreted results:
+
+                        $ for FILE in `ls`; cat $FILE; done;
+                    </section>
+                    <section data-markdown>
+                    Recursive search and replace in all files with the `.php` extension:
+
+                        $ for FILE in `find ./ -name "*.php"`; do perl -pi.back -e 's/\$this->doSomething\((.*?)\)/\$this->doSomethingElse(\1)/g' $FILE; done;
+                    </section>
+                    <section data-markdown>
+                    Combining with GIT - Refactoring
+                    --------------------------------
+
+                    Change the name of all files with Url to Uri (ugly but effective) with git:
+
+                        $ for FILE in `git ls-files`; \
+                            do git mv $FILE `echo $FILE | perl -pe 's/Url/Uri/g'`; \
+                            done;
+                    </section>
+                    <section data-markdown>
+                    Replace all occurances of string in all files in a git repository:
+
+                        $ for FILE in `git ls-files`; do perl -pi.back -e 's/Url/Uri/g' $FILE; done;
+                    </section>
+                    <section data-markdown>
+                    Editing long commands
+                    ---------------------
+
+                    Open a long comand in the default EDITOR
+
+                    Bash: `<crtl-x> e`:
+                    VIM: `<esc> v`
+
+                        $ for i in `find -name "*ImporterExtension.php"`; do cat $i | sed -e 's/function extend/function extendSiteImport/g' > $i.new; mv $i.new $i; done;
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown>
+                    oh-my-zsh
+                    ---------
+
+                    Oh-my-zsh is a configuration framework for ZSH and instantaly makes
+                    it more useful and attractive.
+
+                        $ curl -L http://install.ohmyz.sh | sh
+
+                    Change theme:
+
+                        $ vim ~/.zshrc
+                        s/robbyrussel/terminalparty
+
+                    See: https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown>
+                    The Directory Stack
+                    -------------------
+                      
+                        $ pwd 
+                        /home/daniel/www/symfony-cmf/RoutingAutoBundle/vendor/symfony-cmf/routing-auto
+                        $ d
+                        0       ~/www/symfony-cmf/RoutingAutoBundle/vendor/symfony-cmf/routing-auto
+                        1       ~/www/symfony-cmf/RoutingAutoBundle
+                        2       ~/www/symfony-cmf
+                        3       ~/www/symfony-cmf/RoutingAuto
+                        $ cd ~3
+                        $ pwd
+                        /home/daniel/www/symfony-cmf/RoutingAuto
+                        $ cd ~1
+                        $ pwd 
+                        /home/daniel/www/symfony-cmf/RoutingAutoBundle/vendor/symfony-cmf/routing-auto
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown>
+                    Tmux
+                    ----
+
+                    - Allows you to "wrap" shell sessions: Sessions are not tied to the terminal instance.
+                    - Allows you to manage multiple sessions (e.g. one for each project)
+                    - Each session can have multiple windows.
+                    - If you know GNU Screen, TMUX is the same thing but *much* better
+
+                    Benefits:
+
+                    - Quickly change between multiple projects
+                    </section>
+                    <section data-markdown>
+                    Example:
+
+                      1. You login to a server to change an apache virtualhost
+                      2. You cd to `/etc/apache2/sites-enabled` and type `vim mysite.conf`
+                      3. You edit the file
+                      4. You quit vim
+                      5. You type `/etc/init.d/apache2 restart`
+                      6. Everything breaks
+                      7. You type `vim mysite.conf`
+                      8. You try and undo the change you did, but you dont remember how, you guess
+                      9. You quit vim
+                      10. You type `/etc/init.d/apache2 restart`
+                      11. Everything breaks
+                      12. goto 7
+                    </section>
+                    <section data-markdown>
+                    With TMUX:
+
+                      1. You login to the server
+                      2. You connect to your apache session
+                      3. The VIM window is already open, you edit the file
+                      4. You change to a command window
+                      5. You restart apache
+                      6. Everything breaks
+                      7. You switch back to the VIM window and press `u` then `:w` to undo and write your change
+                      8. You restart apache
+                      9. Everything is OK
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown>
+                    Miscilenaous
+                    ------------
+                    </section>
+                    <section data-markdown>
+                    ## Random VIM tip:
+                    Swap caps lock key with escape:
+
+                        setxkbmap -option caps:escape
+                    </section>
+                    <section>
+                    ## Random tip for English people:
+
+                    Enable the composer key tö üsé äcćents àll över the plãce:
+
+                        setxkbmap -option compose:rctrl
+
+                    This is especially good with an English/Amercian keyboard!
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                    Grep all files known by GIT:
+
+                        $ git grep "Hello"
+                    </section>
+                    <section data-markdown>
+                    Works with Regex too:
+
+                        $ git grep "call.*Something"
+                    </section>
+                    <section data-markdown>
+                    And with paths
+
+                        $ git grep "call.*Something" -- **/*.php
+                    </section>
+                    <section data-markdown>
+                    Infact `--` is everywhere in GIT:
+
+                        $ git checkout foobar -- src/Example/file.php
+                        $ git diff -- composer.json
+                        $ git log -- app/AppKernel.php
+                    </section>
+                    <section data-markdown>
+                    Reset the state of your repository to a specified remote branch:
+
+                        $ git reset --hard origin/my-other-branch
+                    </section>
+                    </section>
+                    <section data-markdown>
+                    Other cool stuff
+                    ----------------
+
+                    Schedule commands:
+
+                        $ echo "ls -l" | at midnight
+                    </section>
+                    </section>
+                    <section data-markdown>
+                    Watch commands:
+
+                        $ watch date
+                        $ watch mpc
+                    </section>
+                    <section data-markdown>
+                    Watch star wars over telnet:
+
+                        $ telnet towel.blinkenlights.nl
+                    </section>
+                    <section data-markdown>
+                    # References
+                    - Commandlinefu.com
+                    - ZSH Expansion: http://zsh.sourceforge.net/Doc/Release/Expansion.html#History-Expansion
+                    - Readline shortcuts: http://www.bigsmoke.us/readline/shortcuts
+                    </section>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
