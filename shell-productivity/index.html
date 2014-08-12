@@ -143,7 +143,7 @@
                     # Wildcards
                     </section>
                     <section data-markdown>
-                    Specify multiple range of targets:
+                    Specify range of targets:
 
                         $ touch file[1-10].txt
                     
@@ -157,18 +157,11 @@
                     Everyone knows `*` right?
 
                         $ mv *.txt myfolder
-                        $ ls myfolder
-                        file1.txt
-                        file2.txt
-                        ..
-                        file10.txt
                     </section>
                     <section data-markdown>
                     What about `?`
 
                         $ mv file??.txt myfolder
-                        $ ls myfolder
-                        file10.txt
                     </section>
                     <section data-markdown>
                     More globbing (http://fendrich.se/blog/2012/09/28/no):
@@ -187,8 +180,8 @@
                 </section>
                 <section>
                     <section data-markdown>
-                    BANG!: Bang operators
-                    ---------------------
+                    BANG!: History Operators
+                    ------------------------
                     </section>
                     <section data-markdown>
                     Get last command:
@@ -197,7 +190,6 @@
 
                         $ vim /etc/hosts
                         $ sudo !!
-                        $ sudo /etc/hosts
                     </section>
                     <section data-markdown>
                     Last argument of last command:
@@ -206,6 +198,16 @@
                         $ touch /foobar
                         $ rm !$
                         $ rm /foobar
+                    </section>
+                    <section data-markdown>
+                    List all of the history:
+
+                        $ history | grep foobar
+                    </section>
+                    <section data-markdown>
+                        Execute a command from the history:
+
+                        !123
                     </section>
                 </section>
                 <section>
@@ -224,17 +226,15 @@
 
                         $ echo "BEER BEER BEER BEER BEER BEER BEER"
                         $ !!:s/BEER/SHNITZEL
-                        $ echo "SHNITZEL BEER BEER BEER BEER BEER BEER"
 
+                        $ echo "BEER BEER BEER BEER BEER BEER BEER"
                         $ !!:s/BEER/SHNITZEL/g
-                        $ echo "SHNITZEL SHNITZEL SHNITZEL SHNITZEL SHNITZEL SHNITZEL SHNITZEL"
                     </section>
                     <section data-markdown>
                     You can add as many modifiers as you want:
 
                         $ echo "Happy brown dogs sleep peacefully"
                         $ !!:s/Happy/Colorless/:s/brown/green/:s/dogs/ideas/:s/peacefully/furiously/
-                        $ echo "Colorless green ideas sleep furiously"
                     </section>
                     <section data-markdown>
                     ## Other modifiers
@@ -269,9 +269,7 @@
                     Using perl:
 
                         $ echo "http://my.site.dom" | perl -pe 's/my/your/g'
-                        http://your.site.dom
                         $ echo "http://my.site.dom" | perl -pe 's/^.*my.(.*).dom/She sells \1 shells/g'
-                        She sells site shells
                     </section>
                     <section data-markdown>
                     Editing a file in place:
@@ -282,7 +280,6 @@
                     Using sed (note the escaping around the brackets):
 
                         $ echo "http://my.site.dom" | sed -e 's/^.*my.\(.*\).dom/She sells \1 shells/g'
-                        She sells site shells
 
                     </section>
                     <section data-markdown>
@@ -292,7 +289,6 @@
                     If using other tools scares you, you can use PHP, its just more verbose!:
 
                         $ echo "She sells sea shells on the sea shore" | php -r "echo str_replace('sells', 'throws', file_get_contents('php://stdin'));"
-                        She throws sea shells on the sea shore
                     </section>
                 </section>
 
@@ -318,9 +314,9 @@
 
                         $ echo ${barfoo:a}
                         /home/daniel/foobar
-                        $ echo $((C)foobar)
+                        $ echo $((C)foobar)   # Captialize first letter
                         Foobar
-                        $ echo $(foobar:u)
+                        $ echo $(foobar:u)    # Uppercase all
                         FOOBAR
                     </section>
                 </section>
@@ -333,9 +329,6 @@
                     Potatoes:
 
                         $ for NUMBER in One Two Three; do echo $NUMBER" potato"; done;
-                        One potato
-                        Two potato
-                        Three potato
                     </section>
                     <section data-markdown>
                     Iterate over interpreted results:
@@ -345,7 +338,8 @@
                     <section data-markdown>
                     Recursive search and replace in all files with the `.php` extension:
 
-                        $ for FILE in `find ./ -name "*.php"`; do perl -pi.back -e 's/\$this->doSomething\((.*?)\)/\$this->doSomethingElse(\1)/g' $FILE; done;
+                        $ for FILE in `find ./ -name "*.php"`; do perl -pi.back -e 's/doSomething\((.*?)\)/doSomethingElse(\1)/g' $FILE; done;
+
                     </section>
                     <section data-markdown>
                     Combining with GIT - Refactoring
@@ -376,22 +370,26 @@
                 </section>
                 <section>
                     <section data-markdown>
-                    oh-my-zsh
-                    ---------
-
-                    Oh-my-zsh is a configuration framework for ZSH and instantaly makes
-                    it more useful and attractive.
-
-                        $ curl -L http://install.ohmyz.sh | sh
-
-                    Change theme:
-
-                        $ vim ~/.zshrc
-                        s/robbyrussel/terminalparty
-
-                    See: https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+                    SSH
+                    ---
                     </section>
+                    <section data-markdown>
+                    Use the `.ssh/config` file:
+
+                        Host dantleech
+                        HostName www.dantleech.com
+                        User daniel
+                        Compression yes
+                    </section>
+                    <section data-markdown>
+                    Use specific keys for specific sites:
+
+                        Host github.com
+                        IdentityFile /Users/preagan/.ssh/github
+                    </section>
+
                 </section>
+
                 <section>
                     <section data-markdown>
                     The Directory Stack
@@ -412,6 +410,28 @@
                         /home/daniel/www/symfony-cmf/RoutingAutoBundle/vendor/symfony-cmf/routing-auto
                     </section>
                 </section>
+
+                <section>
+                    <section data-markdown>
+                    oh-my-zsh and prezto
+                    --------------------
+
+                    Oh-my-zsh and prezto are configuration frameworks for ZSH and instantaly make
+                    it more useful and attractive.
+
+                    Prezto is quicker, but OH-My-ZSH is possibly easier to get up and running.
+
+                        $ curl -L http://install.ohmyz.sh | sh
+
+                    Change theme:
+
+                        $ vim ~/.zshrc
+                        s/robbyrussel/terminalparty
+
+                    See: https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+                    </section>
+                </section>
+
                 <section>
                     <section data-markdown>
                     Tmux
@@ -532,6 +552,7 @@
                     - Commandlinefu.com
                     - ZSH Expansion: http://zsh.sourceforge.net/Doc/Release/Expansion.html#History-Expansion
                     - Readline shortcuts: http://www.bigsmoke.us/readline/shortcuts
+                    - Level up your shell game: http://viget.com/extend/level-up-your-shell-game
                     </section>
                 </section>
 
