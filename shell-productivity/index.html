@@ -219,7 +219,7 @@
 
                         $ echo "Happy brown dogs sleep peacefully"
                         $ !!:s/Happy/Sad/
-                        $ !!:s/restlessly//
+                        $ !!:s/peacefully/restlessly/
                     </section>
                     <section data-markdown>
                     Replacing one or many:
@@ -269,7 +269,8 @@
                     Using perl:
 
                         $ echo "http://my.site.dom" | perl -pe 's/my/your/g'
-                        $ echo "http://my.site.dom" | perl -pe 's/^.*my.(.*).dom/She sells \1 shells/g'
+                        $ echo "http://my.site.dom" \
+                            | perl -pe 's/^.*my.(.*).dom/She sells \1 shells/g'
                     </section>
                     <section data-markdown>
                     Editing a file in place:
@@ -279,7 +280,8 @@
                     <section data-markdown>
                     Using sed (note the escaping around the brackets):
 
-                        $ echo "http://my.site.dom" | sed -e 's/^.*my.\(.*\).dom/She sells \1 shells/g'
+                        $ echo "http://my.site.dom" \
+                            | sed -e 's/^.*my.\(.*\).dom/She sells \1 shells/g'
 
                     </section>
                     <section data-markdown>
@@ -288,7 +290,8 @@
 
                     If using other tools scares you, you can use PHP, its just more verbose!:
 
-                        $ echo "She sells sea shells on the sea shore" | php -r "echo str_replace('sells', 'throws', file_get_contents('php://stdin'));"
+                        $ echo "She sells sea shells on the sea shore" \
+                            | php -r "echo str_replace('sells', 'throws', file_get_contents('php://stdin'));"
                     </section>
                 </section>
 
@@ -483,11 +486,12 @@
                     </section>
                     <section data-markdown>
                     ## Random VIM tip:
+
                     Swap caps lock key with escape:
 
                         setxkbmap -option caps:escape
                     </section>
-                    <section>
+                    <section data-markdown>
                     ## Random tip for English people:
 
                     Enable the composer key tö üsé äcćents àll över the plãce:
@@ -549,7 +553,7 @@
                     </section>
                     <section data-markdown>
                     # References
-                    - Commandlinefu.com
+                    - commandlinefu: http://commandlinefu.com
                     - ZSH Expansion: http://zsh.sourceforge.net/Doc/Release/Expansion.html#History-Expansion
                     - Readline shortcuts: http://www.bigsmoke.us/readline/shortcuts
                     - Level up your shell game: http://viget.com/extend/level-up-your-shell-game
