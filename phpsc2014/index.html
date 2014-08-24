@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>EZSC2014 CMF and Routing Auto Workshop</title>
+
+		<meta name="description" content="Tips and tricks for using the shell">
+		<meta name="author" content="Daniel Leech">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Creating a Basic CMS</h1>
+					<h3>With the CMF and the RoutingAutoBundle</h3>
+					<p>
+						<small><a href="http://www.dantleech.com">Daniel Leech</a> / <a href="http://twitter.com/dantleech">@dantleech</a></small>
+						<small><a href="http://blog.willem-jan.net">Willem-Jan </a> / <a href="http://twitter.com/willemjanz">@willemjanz</a></small>
+					</p>
+				</section>
+
+                <section>
+                    <h1>About us</h1>
+                    <h2>Daniel Leech</h2>
+                    <ul>
+                        <li>Senior developer @massiveart</li>
+                        <li>CMF Core Member since early 2013</li>
+                        <li>Author of PHPCR Shell and RoutingAutoBundle</li>
+                        <li>Twitter: @dantleech</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h1>About us</h1>
+                    <h2>Willem-Jan Zijderveld</h2>
+                    <ul>
+                        <li>Developer @ ??</li>
+                        <li>CMF and PHPCR contributor since 2013</li>
+                        <li>Twitter: @willemjanz</li>
+
+                    </ul>
+                </section>
+
+				<section data-background="images/cmfdepsdark.png">
+                    <h2>What is the CMF?</h2>
+					<p>
+                    Set of loosely coupled bundles and uncoupled components concerened with building content mangement systems
+					</p>
+				</section>
+
+				<section data-background="images/cmfdeps.png" data-background-size="900px">
+                </section>
+
+                <section data-background="images/phpcrback.png">
+                    <h2>PHPCR</h2>
+                    <ul>
+                        <li>Content Repository</li>
+                        <li>Primary storage system used by the CMF</li>
+                        <li>Stores content/data in a hierarchy like a filesystem</li>
+                        <li>Allows SQL queries like an RDBMSM</li>
+                    </ul>
+                </section>
+                <section data-background="images/routingback.png">
+                    <h2>CMF Routing</h2>
+                    <ul>
+                        <li>Dynamic Routing</li>
+                        <li>Direct references to content</li>
+                    </ul>
+                </section>
+                <section data-background="images/routing.png" data-background-size="900px">
+                </section>
+
+                <section data-background="images/routingautoback.png">
+                    <h2>CMF Routing Auto Bundle</h2>
+                    <ul>
+                        <li>Automatically creates routes based on a URL schema</li>
+                        <li>Handles conflicts</li>
+                        <li>Handles defunct routes</li>
+                    </ul>
+                </section>
+
+                <section data-background="images/routingautoback.png">
+                    <ul>
+                        <li>URL schema: /posts/{date}/{title}</li>
+                        <li>Save document "My Blog Post"
+                        <li>Creates route: /posts/2014-08-08/my-blog-post</li>
+                    </ul>
+                </section>
+
+                <section data-background="#000">
+                    <h2>Part 1: The Frontend</h2>
+                    <h3>Aim: Create a working frontend</h3>
+                    <p>
+                        <a href="resources.html">http://slides.dantleech.com/phpsc2014/resources.html</a><br />
+                        <a href="http://cmf.ezsc/page/home">http://cmf.ezsc/page/home</a>
+                    </p>
+                    <ul>
+                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/getting-started.html#initialize-the-database">Initialize the database and Generate the bundle</a> (call it AcmeBasicCmsBundle!)</li>
+                        <li>Create the <a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/getting-started.html#the-documents">content documents</a> (Page and Post)</li>
+                        <li>Create a <a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/getting-started.html#repository-initializer">data initializer</a></li>
+                        <li>Create and <a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/14/files#diff-38508d98457c474cc7821400e758052bR1">load</a> some fixutures (optionally with <a href="https://github.com/nelmio/alice#alice---expressive-fixtures-generator-">Alice)</a></li>
+                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/auto-routing.html#enable-the-dynamic-router">Enable</a> the CMF dynamic router</li>
+                        <li>Create a <a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/auto-routing.html#auto-routing-configuration">routing auto URL schema</a> for your content documents</li>
+                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/content-to-controllers.html#route-requests-to-a-controller">Map</a> the your content documents to controllers using the RoutingBundle</li>
+                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/content-to-controllers.html#route-requests-to-a-controller">Handle</a> the content in the controllers</li>
+                    </ul>
+
+                </section>
+
+                <section data-background="#000">
+                    <h2>Part 2: Administration</h2>
+                    <h3>Aim: Create an administration interface</h3>
+                    <p>
+                    <a href="resources.html">http://slides.dantleech.com/phpsc2014/resources.html</a><br />
+                    <a href="http://cmf.ezsc/admin/dashboard">http://cmf.ezsc/admin/dashboard</a>
+                    </p>
+                    <ul>
+                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/sonata-admin.html#installation">Enable and configure</a> the necessary bundles</li>
+                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/sonata-admin.html#creating-the-admin-classes">Create</a> the admin classes</li>
+                        <li><a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/19/files">Enable</a> the Tree Browser</li>
+                    </ul>
+
+                </section>
+
+                <section data-background="#000">
+                    <h2>Part 3: Are we still here?</h2>
+                        <ul>
+                            <li>Integrate the CMF <a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/21/files">MenuBundle</a></a></li>
+                        <li><a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/20">Refactor</a> to have a dynamic home page</a></li>
+            </div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

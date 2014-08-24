@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>PHPSC2014 CMF Resources</title>
+</head>
+<style>
+h1 {
+    background-color: #111;
+    padding: 10px;
+    color: #fff;
+}
+
+h2 {
+    background-color: #ddd;
+    padding: 10px;
+}
+
+section {
+    margin-left: 10px;
+}
+</style>
+<body>
+    <h1>PHPCRSC2014 CMF Resources</h1>
+    <h2>General</h2>
+    <section>
+        <ul>
+            <li><a href="http://phpsccmf2014.dantleech.com/page/home">The website (frontend)</a></li>
+            <li><a href="http://phpsccmf2014.dantleech.com/admin/dashboard">The website (backend)</a></li>
+            <li><a href="http://phpcr.readthedocs.org/en/latest/phpcr-shell/interacting.html">PHPCRSH</a>: Instructions on interacting with your content using the PHPCR shell (which is installed on your VM)</li>
+        </ul>
+    </section>
+    <h2>Useful commands</h2>
+    <section>
+        Reinitialize the database
+        <pre>
+        $ php app/console doctrine:phpcr:fixtures:load
+        </pre>
+        Reset your project to a specific branch:
+        <pre>
+        $ git reset --hard origin/xxx-xxxxxxx
+        </pre>
+        Launch PHPCR shell:
+        <pre>
+        $ phpcrsh
+        </pre>
+    </section>
+    <h2>Part1: The Frontend</h2>
+    <section>
+        <h3>Branches and Pull Requests</h3>
+        <section>
+            <ul>
+                <li><a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/13">010-deps-and-config</a></li>
+                <li><a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/14">020-bundle-initializers-and-data-fixtures</a></li>
+                <li><a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/15">030-routing-and-routing-auto</a></li>
+                <li><a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/16">040-controllers-and-templates</a></li>
+            </ul>
+        </section>
+        <h3>Resources</h3>
+        <section>
+            <h4>Creating a basic CMS tutorial</h4>
+            <p>This workshop is heavily based upon the Creating a Basic CMS tutorial</p>
+            <ul>
+                <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/getting-started.html">Getting Started</a></li>
+                <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/auto-routing.html">Routing and Automatic Routing</a>
+                <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/content-to-controllers.html">Controllers and Templates</a>
+            </ul>
+            <h4>CMF Documentation</h4>
+            <ul>
+                <li><a href="http://symfony.com/doc/current/cmf/bundles/routing/index.html">RoutingBundle</a></li>
+                <li><a href="http://symfony.com/doc/current/cmf/bundles/routing_auto/index.html">RoutingAutoBundle</a></li>
+            </ul>
+        </section>
+    </section>
+    <h2>Part 2: Administration</h2>
+    <section>
+        <h3>Branches and Pull Requests</h3>
+        <ul>
+            <li><a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/18">060-admin-basic</a></li>
+            <li><a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/19">070-admin-tree</a></li>
+        </ul>
+        <h3>Resources</h3>
+        <ul>
+            <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/sonata-admin.html">Creating a basic CMS: Sonata Admin</a></li>
+        </ul>
+    </section>
+</body>
+</html>
