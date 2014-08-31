@@ -55,9 +55,10 @@
                     <h1>About us</h1>
                     <h2>Daniel Leech</h2>
                     <ul>
-                        <li>Senior developer @massiveart</li>
-                        <li>CMF Core Member since early 2013</li>
+                        <li>Senior developer @ MassiveArt</li>
+                        <li>CMF Core Member since late 2012</li>
                         <li>Author of PHPCR Shell and RoutingAutoBundle</li>
+                        <li>Principal author of Creating a Basic CMS tutorial</li>
                         <li>Twitter: @dantleech</li>
                     </ul>
                 </section>
@@ -66,7 +67,7 @@
                     <h1>About us</h1>
                     <h2>Willem-Jan Zijderveld</h2>
                     <ul>
-                        <li>Developer @ ??</li>
+                        <li>Developer @ Qandidate</li>
                         <li>CMF and PHPCR contributor since 2013</li>
                         <li>Twitter: @willemjanz</li>
 
@@ -86,8 +87,8 @@
                 <section data-background="images/phpcrback.png">
                     <h2>PHPCR</h2>
                     <ul>
-                        <li>Content Repository</li>
-                        <li>Primary storage system used by the CMF</li>
+                        <li>Content Repository API</li>
+                        <li>Primary storage system for the CMF (via. PHPCR-ODM)</li>
                         <li>Stores content/data in a hierarchy like a filesystem</li>
                         <li>Allows SQL queries like an RDBMSM</li>
                     </ul>
@@ -95,8 +96,8 @@
                 <section data-background="images/routingback.png">
                     <h2>CMF Routing</h2>
                     <ul>
-                        <li>Dynamic Routing</li>
-                        <li>Direct references to content</li>
+                        <li>Persisted routing</li>
+                        <li>Routes reference content</li>
                     </ul>
                 </section>
                 <section data-background="images/routing.png" data-background-size="900px">
@@ -105,7 +106,7 @@
                 <section data-background="images/routingautoback.png">
                     <h2>CMF Routing Auto Bundle</h2>
                     <ul>
-                        <li>Automatically creates routes based on a URL schema</li>
+                        <li>Automatically creates routes for content based on a URL schema</li>
                         <li>Handles conflicts</li>
                         <li>Handles defunct routes</li>
                     </ul>
@@ -127,14 +128,14 @@
                         <a href="http://cmf.ezsc/page/home">http://cmf.ezsc/page/home</a>
                     </p>
                     <ul>
-                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/getting-started.html#initialize-the-database">Initialize the database and Generate the bundle</a> (call it AcmeBasicCmsBundle!)</li>
-                        <li>Create the <a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/getting-started.html#the-documents">content documents</a> (Page and Post)</li>
-                        <li>Create a <a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/getting-started.html#repository-initializer">data initializer</a></li>
+                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/getting-started.html#initialize-the-database">Initialize the database and Generate the bundle</a> (call it AcmeBasicCmsBundle!)</li>
+                        <li>Create the <a href="http://symfony.com/doc/master/cmf/tutorial/getting-started.html#the-documents">content documents</a> (Page and Post)</li>
+                        <li>Create a <a href="http://symfony.com/doc/master/cmf/tutorial/getting-started.html#repository-initializer">data initializer</a></li>
                         <li>Create and <a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/14/files#diff-38508d98457c474cc7821400e758052bR1">load</a> some fixutures (optionally with <a href="https://github.com/nelmio/alice#alice---expressive-fixtures-generator-">Alice)</a></li>
-                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/auto-routing.html#enable-the-dynamic-router">Enable</a> the CMF dynamic router</li>
-                        <li>Create a <a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/auto-routing.html#auto-routing-configuration">routing auto URL schema</a> for your content documents</li>
-                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/content-to-controllers.html#route-requests-to-a-controller">Map</a> the your content documents to controllers using the RoutingBundle</li>
-                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/content-to-controllers.html#route-requests-to-a-controller">Handle</a> the content in the controllers</li>
+                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/auto-routing.html#enable-the-dynamic-router">Enable</a> the CMF dynamic router</li>
+                        <li>Create a <a href="http://symfony.com/doc/master/cmf/tutorial/auto-routing.html#auto-routing-configuration">routing auto URL schema</a> for your content documents</li>
+                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/content-to-controllers.html#route-requests-to-a-controller">Map</a> the your content documents to controllers using the RoutingBundle</li>
+                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/content-to-controllers.html#route-requests-to-a-controller">Handle</a> the content in the controllers</li>
                     </ul>
 
                 </section>
@@ -147,8 +148,8 @@
                     <a href="http://cmf.ezsc/admin/dashboard">http://cmf.ezsc/admin/dashboard</a>
                     </p>
                     <ul>
-                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/sonata-admin.html#installation">Enable and configure</a> the necessary bundles</li>
-                        <li><a href="http://symfony.com/doc/master/cmf/cookbook/creating_a_cms/sonata-admin.html#creating-the-admin-classes">Create</a> the admin classes</li>
+                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/sonata-admin.html#installation">Enable and configure</a> the necessary bundles</li>
+                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/sonata-admin.html#creating-the-admin-classes">Create</a> the admin classes</li>
                         <li><a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/19/files">Enable</a> the Tree Browser</li>
                     </ul>
 
