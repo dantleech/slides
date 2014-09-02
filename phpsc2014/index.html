@@ -121,45 +121,29 @@
                 </section>
 
                 <section data-background="#000">
-                    <h2>Part 1: The Frontend</h2>
-                    <h3>Aim: Create a working frontend</h3>
-                    <p>
-                        <a href="resources.html">http://slides.dantleech.com/phpsc2014/resources.html</a><br />
-                        <a href="http://cmf.ezsc/page/home">http://cmf.ezsc/page/home</a>
-                    </p>
-                    <ul>
-                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/getting-started.html#initialize-the-database">Initialize the database and Generate the bundle</a> (call it AcmeBasicCmsBundle!)</li>
-                        <li>Create the <a href="http://symfony.com/doc/master/cmf/tutorial/getting-started.html#the-documents">content documents</a> (Page and Post)</li>
-                        <li>Create a <a href="http://symfony.com/doc/master/cmf/tutorial/getting-started.html#repository-initializer">data initializer</a></li>
-                        <li>Create and <a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/14/files#diff-38508d98457c474cc7821400e758052bR1">load</a> some fixutures (optionally with <a href="https://github.com/nelmio/alice#alice---expressive-fixtures-generator-">Alice)</a></li>
-                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/auto-routing.html#enable-the-dynamic-router">Enable</a> the CMF dynamic router</li>
-                        <li>Create a <a href="http://symfony.com/doc/master/cmf/tutorial/auto-routing.html#auto-routing-configuration">routing auto URL schema</a> for your content documents</li>
-                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/content-to-controllers.html#route-requests-to-a-controller">Map</a> the your content documents to controllers using the RoutingBundle</li>
-                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/content-to-controllers.html#route-requests-to-a-controller">Handle</a> the content in the controllers</li>
+                    <h2>Before we start:</h2>
+                    <pre><code>
+                            $ ssh ezsc@xxx.xxx.xxx.xxx
+                            $ cd www/workshops/cmf
+                            $ git fetch origin
+                            $ git checkout 1-start
+                            $ sh init.sh
+                    </code></pre>
                     </ul>
-
                 </section>
 
                 <section data-background="#000">
-                    <h2>Part 2: Administration</h2>
-                    <h3>Aim: Create an administration interface</h3>
-                    <p>
-                    <a href="resources.html">http://slides.dantleech.com/phpsc2014/resources.html</a><br />
-                    <a href="http://cmf.ezsc/admin/dashboard">http://cmf.ezsc/admin/dashboard</a>
-                    </p>
+                    <h2>Lets do the tutorial!</h2>
                     <ul>
-                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/sonata-admin.html#installation">Enable and configure</a> the necessary bundles</li>
-                        <li><a href="http://symfony.com/doc/master/cmf/tutorial/sonata-admin.html#creating-the-admin-classes">Create</a> the admin classes</li>
-                        <li><a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/19/files">Enable</a> the Tree Browser</li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/getting-started.html">Getting Started</a> : <code>2-getting-started</code></li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/auto-routing.html">Routing and Automatic Routing</a> : <code>3-routing-and-routing-auto</code></li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/sonata-admin.html">The Backend - Sonata Admin</a> : <code>4-sonata-admin</code></li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/content-to-controllers.html">Controllers and Templates</a> : <code>5-controllers-and-templates</code></li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/the-frontend.html">Creating a Menu</a> : <code>6-menu</code></li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/make-homepage.html">The Site Document and the Homepage</a> : <code>7-site-homepage</code></li>
+                        <li class="fragment" >Done!</li>
                     </ul>
-
                 </section>
-
-                <section data-background="#000">
-                    <h2>Part 3: Are we still here?</h2>
-                        <ul>
-                            <li>Integrate the CMF <a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/21/files">MenuBundle</a></a></li>
-                        <li><a href="https://github.com/dantleech/eZSummerCampCMF2014/pull/20">Refactor</a> to have a dynamic home page</a></li>
             </div>
 		</div>
 
