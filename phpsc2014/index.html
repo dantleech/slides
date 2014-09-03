@@ -90,16 +90,18 @@
                         <li>Content Repository API</li>
                         <li>Primary storage system for the CMF (via. PHPCR-ODM)</li>
                         <li>Stores content/data in a hierarchy like a filesystem</li>
-                        <li>Allows SQL queries like an RDBMSM</li>
+                        <li>Allows SQL queries like an RDBMS</li>
                     </ul>
                 </section>
                 <section data-background="images/routingback.png">
                     <h2>CMF Routing</h2>
                     <ul>
-                        <li>Persisted routing</li>
+                        <li>Routes stored in the database</li>
                         <li>Routes reference content</li>
+                        <li>With PHPCR storage, routes are stored in a tree</li>
                     </ul>
                 </section>
+
                 <section data-background="images/routing.png" data-background-size="900px">
                 </section>
 
@@ -125,6 +127,7 @@
                     <pre><code>
                             $ ssh ezsc@xxx.xxx.xxx.xxx
                             $ cd www/workshops/cmf
+                            $ git reset --hard
                             $ git fetch origin
                             $ git checkout 1-start
                             $ sh init.sh
@@ -135,15 +138,21 @@
                 <section data-background="#000">
                     <h2>Lets do the tutorial!</h2>
                     <ul>
-                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/getting-started.html">Getting Started</a> : <code>2-getting-started</code></li>
-                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/auto-routing.html">Routing and Automatic Routing</a> : <code>3-routing-and-routing-auto</code></li>
-                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/sonata-admin.html">The Backend - Sonata Admin</a> : <code>4-sonata-admin</code></li>
-                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/content-to-controllers.html">Controllers and Templates</a> : <code>5-controllers-and-templates</code></li>
-                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/the-frontend.html">Creating a Menu</a> : <code>6-menu</code></li>
-                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/make-homepage.html">The Site Document and the Homepage</a> : <code>7-site-homepage</code></li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/getting-started.html">Getting Started</a><span class="fragment"> : <code>2-getting-started</code></span></li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/auto-routing.html">Routing and Automatic Routing</a><span class="fragment">  : <code>3-routing-and-routing-auto</code></span></li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/sonata-admin.html">The Backend - Sonata Admin</a><span class="fragment">  : <code>4-sonata-admin</code></span></li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/content-to-controllers.html">Controllers and Templates</a><span class="fragment">  : <code>5-controllers-and-templates</code></span></li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/the-frontend.html">Creating a Menu</a><span class="fragment">  : <code>6-menu</code></span></li>
+                        <li class="fragment" ><a href="http://symfony.com/doc/master/cmf/tutorial/make-homepage.html">The Site Document and the Homepage</a><span class="fragment">  : <code>7-site-homepage</code></span></li>
                         <li class="fragment" >Done!</li>
                     </ul>
                 </section>
+                <section data-background="#000">
+                    <h2>Lets do the tutorial!</h2>
+                    <ul>
+                        <li>The Tutorial: <a href="http://symfony.com/doc/master/cmf/tutorial">http://symfony.com/doc/master/cmf/tutorial</a></li>
+                        <li>These slides<a href="http://slides.dantleech.com/phpsc2014">http://slides.dantleech.com/phpsc2014</li>
+                        </ul>
             </div>
 		</div>
 
